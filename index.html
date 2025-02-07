@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <script src="./script/random.js" defer>
+    </script>
+    <script src="./script/main.js" defer>
+    </script>
+    <script src="./script/vector.js" defer>
+    </script>
+    <script src="./script/moveable.js" defer>
+    </script>
+    <script src="./script/background.js" defer>
+    </script>
+    <script src="./script/script.js" defer>
+    </script>
+    <script src="./script/particle.js" defer>
+    </script>
+
+    <title>Rocket Launcher</title>
+</head>
+
+<body>
+
+    <h1>Rocket Launcher</h1>
+    <form id="myForm" method="get">
+        <div id="container_all">
+
+            <canvas id="canvas" width="800px" height="600px"></canvas>
+
+            <div id="container_form">
+                <h5>Firework assembler</h5>
+                <div id="container_color">
+
+                    <label for="colorpicker"><h3>Select particle color</h3></label>
+                    <fieldset>
+                        <input type="color" name="Color" id="colorpicker" value="#ff0000">
+                    </fieldset>
+                    <p>Color: <span id="colorValue"></span></p>
+                </div>
+
+                <div class="radiusslidecontainer">
+                    <fieldset>
+                        <input type="range" name="Radiusmultiplier" min="1" max="10" value="5" class="slider" id="radiusRange">
+                    </fieldset>
+                    <p>Explosion Size: <span id="radiusValue"></span></p>
+                </div>
+
+                <div class="particleslidecontainer">
+                    <fieldset>
+                        <input type="range" name="Particleamount" min="1" max="1000" value="500" class="slider" id="particleRange">
+                    </fieldset>
+                    <p>Particles: <span id="particleValue"></span></p>
+                </div>
+
+                <div class="particlesizecontainer">
+                    <fieldset>
+                        <input type="range" name="Particlesize" min="1" max="10" value="5" class="slider" id="particleSize">
+                    </fieldset>
+                    <p>Particle Size: <span id="particlesizeValue"></span></p>
+                </div>
+
+                <div class="lifespanslidecontainer">
+                    <fieldset>
+                        <input type="range" name="Lifespannumber" min="1" max="10" value="5" class="slider" id="lifespanRange">
+                    </fieldset>
+                    <p>Fade out: <span id="lifespanValue"></span></p>
+                </div>
+
+                <fieldset>
+                    <input id="name" type="text" name="Name" placeholder="rocket name...">
+                </fieldset>
+
+                <fieldset>
+                    <button id="but1" class="save">save</button>
+                </fieldset>
+            </div>
+
+            <div id="container_form2">
+
+                <h5>Saved Rockets</h5>
+
+                <div id="savedRockets">
+                </div>
+
+
+
+            </div>
+        </div>
+    </form>
+
+
+</body>
+
+</html>
