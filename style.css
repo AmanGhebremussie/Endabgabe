@@ -1,0 +1,72 @@
+/* Grundlegende Formatierungen */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #222;
+  color: white;
+}
+
+/* Canvas */
+#fireworkCanvas {
+  display: block;
+  background-color: black;
+  width: 1920px; /* feste Breite */
+  height: 540px; /* feste Höhe */
+}
+
+/* Container für die Steuerelemente */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1920px;
+  margin-top: 10px;
+}
+
+.controls select,
+.controls input,
+.controls button {
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+}
+
+/* Steuerelemente */
+.control-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.control-group input,
+.control-group button {
+  margin-top: 10px;
+}
+
+.control-group label {
+  margin-bottom: 5px;
+}
+
+/* Stil für den Button */
+#settingsButton {
+  padding: 10px 20px;
+  background-color: #444;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+#settingsButton:hover {
+  background-color: #666;
+}

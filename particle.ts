@@ -1,39 +1,35 @@
-namespace Endabgabe_EIA2 {
-
-    export class Particle extends Moveable {
-
-        lifetime: number;
-        alpha: number;
-        color: string;
-
-        constructor(_position: Vector, _velocity: Vector) {
-
-            super(_position);
-            this.position.x = _position.x;
-            this.position.y = _position.y;
-            this.velocity = _velocity;
-            this.alpha = 1;
-            this.color = (color);
-        }
-
-        draw(): void {
-            //Lifespan -> reduziert Helligkeit des Parikels
-            this.alpha -= lifespanNumber;
-            if (this.alpha < 0) {
-                this.alpha = 0;
-            }
-
-            // Form des Partikels
-            crc2.save();
-            crc2.globalAlpha = this.alpha;
-            crc2.beginPath();
-            crc2.arc(this.position.x, this.position.y, particleSize, 0, 360);
-            crc2.closePath();
-            crc2.fillStyle = this.color;
-            crc2.fill();
-            crc2.restore();
-        }
-
-
+namespace EIA_Endabgabe {
+    export class Particle {
+      x: number;
+      y: number;
+      speedX: number;
+      speedY: number;
+      life: number;
+      radius: number;
+      color: string;
+  
+      constructor(x: number, y: number, speedX: number, speedY: number, life: number, radius: number, color: string) {
+        this.x = x;
+        this.y = y;
+        this.speedX = speedX;
+        this.speedY = speedY;
+        this.life = life;
+        this.radius = radius;
+        this.color = color;
+      }
+  
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 1;
+      }
+  
+      draw(ctx: CanvasRenderingContext2D) {
+        ctx.fillStyle = `rgba(${parseInt(this.color.slice(1, 3), 16)}, ${parseInt(this.color.slice(3, 5), 16)}, ${parseInt(this.color.slice(5, 7), 16)}, ${this.life / 100})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
-}
+  }
+  
