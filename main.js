@@ -1,5 +1,4 @@
 "use strict";
-/// <reference path="particles.ts" />
 var EIA_Endabgabe;
 (function (EIA_Endabgabe) {
     const canvas = document.getElementById('fireworkCanvas');
@@ -8,16 +7,24 @@ var EIA_Endabgabe;
     const particleCountValue = document.getElementById('particleCountValue');
     const speedSlider = document.getElementById('speedSlider');
     const speedValue = document.getElementById('speedValue');
+    const colorPicker = document.getElementById('colorPicker');
     if (!ctx)
         throw new Error('Canvas-Kontext konnte nicht geladen werden!');
     canvas.width = 1920;
     canvas.height = 540;
     let rocketSpeed = 5;
-    let rocketColor = '#ff0000';
-    let particleCount = parseInt(particleCountSlider.value) || 50; // Standardwert 50
+    let rocketColor = '#ff0000'; // Initialfarbe
+    let particleCount = parseInt(particleCountSlider.value) || 50;
     let rockets = [];
-    function getRandomColor() {
-        return rocketColor;
+    // Farbwahl Event Listener
+    colorPicker.addEventListener('input', () => {
+        rocketColor = colorPicker.value; // Setze den aktuellen Wert der Farbauswahl
+    });
+    // Lade den Sound
+    const fireworkSound = new Audio('fireworkblast-106275.mp3');
+    fireworkSound.preload = 'auto'; // Sicherstellen, dass der Sound im Hintergrund geladen wird
+    function getColor() {
+        return rocketColor; // Verwende die aktuelle Farbe
     }
     function updateCanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -37,13 +44,17 @@ var EIA_Endabgabe;
         requestAnimationFrame(updateCanvas);
     }
     function explodeAt(x, y) {
+        // Versuche den Sound abzuspielen und überprüfe auf Fehler
+        fireworkSound.play().catch((error) => {
+            console.error('Fehler beim Abspielen des Sounds:', error);
+        });
         const particles = [];
         for (let i = 0; i < particleCount; i++) {
             const angle = Math.random() * Math.PI * 2;
             const speed = (Math.random() * 2 + 2) * (rocketSpeed / 5);
             const radius = Math.random() * 2 + 2;
             const life = Math.random() * 100 + 50;
-            const color = getRandomColor();
+            const color = getColor(); // Nutze die dynamische Farbe
             particles.push(new EIA_Endabgabe.Particle(x, y, Math.cos(angle) * speed, Math.sin(angle) * speed, life, radius, color));
         }
         rockets.push({ x, y, exploded: true, particles });
