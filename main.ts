@@ -7,8 +7,6 @@ namespace EIA_Endabgabe {
   const speedValue = document.getElementById('speedValue') as HTMLSpanElement;
   const colorPicker = document.getElementById('colorPicker') as HTMLInputElement;
 
-  if (!ctx) throw new Error('Canvas-Kontext konnte nicht geladen werden!');
-
   canvas.width = 1920;
   canvas.height = 540;
 

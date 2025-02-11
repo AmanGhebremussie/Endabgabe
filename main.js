@@ -8,8 +8,6 @@ var EIA_Endabgabe;
     const speedSlider = document.getElementById('speedSlider');
     const speedValue = document.getElementById('speedValue');
     const colorPicker = document.getElementById('colorPicker');
-    if (!ctx)
-        throw new Error('Canvas-Kontext konnte nicht geladen werden!');
     canvas.width = 1920;
     canvas.height = 540;
     let rocketSpeed = 5;
